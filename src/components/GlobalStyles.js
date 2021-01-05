@@ -43,6 +43,9 @@ const GlobalStyles = createGlobalStyle`
     img{
         display: block;
     }
+    input{
+        font-family: 'Nunito Sans' , sans-serif;
+    }
     `;
 
 export default GlobalStyles;
