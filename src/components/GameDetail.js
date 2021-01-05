@@ -1,11 +1,23 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Loading from './Loading';
+import { smallImage } from '../util';
 
 const GameDetail = () => {
+  const history = useHistory();
+
   const { game, screenshots, isLoading } = useSelector((state) => state.detail);
+
+  const exitDetailHandler = (e) => {
+    const element = e.target;
+    if (element.classList.contains('shadow')) {
+      document.body.style.overflow = 'auto';
+      history.push('/');
+    }
+  };
 
   return (
     <>
@@ -14,7 +26,7 @@ const GameDetail = () => {
           <Loading />
         </CardShadow>
       ) : (
-        <CardShadow>
+        <CardShadow className='shadow' onClick={exitDetailHandler}>
           <Detail>
             <Stats>
               <div className='rating'>
@@ -31,14 +43,18 @@ const GameDetail = () => {
               </Info>
             </Stats>
             <Media>
-              <img src={game.background_image} alt='game' />
+              <img src={smallImage(game.background_image, 1280)} alt='game' />
             </Media>
             <Description>
               <p>{game.description_raw}</p>
             </Description>
             <div className='gallery'>
               {screenshots.results.map((screen) => (
-                <img src={screen.image} alt='game' key={screen.id} />
+                <img
+                  src={smallImage(screen.image, 1280)}
+                  alt='game'
+                  key={screen.id}
+                />
               ))}
             </div>
           </Detail>

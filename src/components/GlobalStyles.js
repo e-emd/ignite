@@ -40,6 +40,9 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: #a1ccbc
     }
+    img{
+        display: block;
+    }
     `;
 
 export default GlobalStyles;
