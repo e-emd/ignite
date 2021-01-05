@@ -26,6 +26,10 @@ const GlobalStyles = createGlobalStyle`
     h2{
         font-size: 3rem;
         color:#49CD9C;
+        @media(max-width: 400px) {
+            padding: 1rem;
+            font-size: 2rem;
+        }
     }
     h3{
         font-size: 1.5rem;
